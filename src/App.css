@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+/* CSS Reset & Utility Classes */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --clr-white: #FFFFFF;
+  --clr-bg: #fffaf0;
+  --clr-gray: #807c4e;
+  --clr-black: #000000;
+  --clr-light-yellow: #ffeeb6;
+  --clr-yellow: #fbd549;
+  --clr-green: #4cb41c;
+  --clr-light-green: #cde7b7;
+
+  --ff-playfair: 'Playfair Display', serif;
+  --ff-waterfall: 'Waterfall', cursive;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--ff-waterfall);
+  font-family: var(--ff-playfair);
+  background-color: var(--clr-bg);
+  color: var(--clr-black);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
+input, select, button, textarea {
+  font-family: var(--ff-playfair);
+}
+
+.container {
+  width: 85%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+blockquote {
+  padding: 0 3em;
+  font-size: 0.9rem;
+  max-width: 1000px;
+  color: var(--clr-black);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+blockquote > footer {
+  font-family: cursive;
+  margin-top: 0.5em;
+  color: var(--clr-gray);
+  font-size: 1.1rem;
+}
+
+.fade {
+  -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent);
+}
+
+.error-msg,
+.success-msg {
+  text-align: center;
+  color: var(--clr-bg);
+  margin: 0.3em;
+}
+
+
+/* Media Queries */
+/* Tablet: 768px */
+@media (max-width: 768px) {
+  blockquote {
+    padding: 0 1em;
   }
-  to {
-    transform: rotate(360deg);
+  p {
+    font-size: 0.8rem;
   }
 }
+/* Mobile: 520px */

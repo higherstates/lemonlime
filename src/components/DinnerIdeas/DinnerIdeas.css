@@ -1,0 +1,163 @@
+
+/* Dinner Ideas */
+#dinner-ideas {
+  height: 100%;
+  width: 100%;
+}
+
+
+/* Form */
+.dinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4em auto;
+  }
+
+  .dinner__title {
+    font-size: 4rem;
+    white-space: nowrap;
+  }
+  
+  .dinner__form {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+  
+  .dinner__form-group {
+    margin-bottom: 1em;
+  }
+
+  .dinner__form-group label {
+    margin-right: 1em;
+  }
+  
+  .dinner__form-group select {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--clr-light-green);
+    color: var(--clr-black);
+  }
+  
+  .dinner__form-btn {
+    align-self: center;
+    border: none;
+    border-radius: 100px;
+    background-color: var(--clr-green);
+    color: var(--clr-white);
+    font-size: 1.1rem;
+    padding: 0.5em 1em;
+    margin: 1em auto;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .dinner__form-btn:hover, .dinner__form-btn:active {
+    background-color: var(--clr-light-green);
+    color: var(--clr-black);
+  }
+
+
+
+  /* Food list */
+  .flist {
+    margin: 4em auto;
+  }
+  
+  .flist__title {
+    font-size: 3rem;
+  }
+  
+  
+  /* Food list Table */
+  .flist__table {
+    border-collapse: collapse;
+    table-layout: auto;
+    margin: 1em auto;
+    text-align: center;
+    width: 100%;
+    white-space: wrap;
+  }
+  
+  .flist__table th {
+    border: 2px solid white;
+    background-color: var(--clr-white);
+  }
+  
+  
+  .flist__table td {
+    border: 2px solid white;
+    background-color: var(--clr-light-yellow);
+    padding: 0.5em;
+  }
+  
+  .flist__table input[type=text] {
+    margin-top: 0.6em;
+    border: none;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.301);
+  }
+  
+  .flist__table--btn {
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: var(--clr-white);
+    padding: 0 0.5em;
+    margin: 0.2em;
+    opacity: 0.6;
+  }
+  
+  .flist__table--btn:hover, .flist__table--btn:active {
+    opacity: 1;
+  }
+
+
+  /* Tooltip button */
+span.i__btn {
+  background-color: transparent;
+  font-size: 0.53rem;
+  color: var(--clr-gray);
+  border: 1px solid var(--clr-gray);
+  border-radius: 50%;
+  padding: 0 0.5em;
+  cursor: default;
+  margin-left: 1em;
+  opacity: 0.6;
+}
+
+.tooltip-green {
+  --balloon-color: var(--clr-black);
+}
+
+.tooltip-big-text {
+  --balloon-font-size: 0.7rem;
+}
+
+.i-veggie {
+  margin: 0.5em 0.5em auto;
+  color: var(--clr-green);
+}
+
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .dinner__title {
+    font-size: 3rem;
+  }
+
+  .flist__title {
+    font-size: 2rem;
+  }
+
+  .flist__table th {
+    font-size: 0.8rem;
+  }
+
+  .flist__table td {
+    font-size: 0.8rem;
+  }
+
+ 
+}

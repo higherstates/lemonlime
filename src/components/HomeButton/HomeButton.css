@@ -1,0 +1,17 @@
+.home__btn {
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 1px;
+    color: var(--clr-black);
+    background-color: var(--clr-yellow);
+    padding: 0.5em 1em;
+    margin: 1em auto 2em;
+    transition: all 0.2s;
+}
+.home__btn:hover,
+.home__btn:focus {
+    color: var(--clr-white);
+    background-color: var(--clr-green);
+}

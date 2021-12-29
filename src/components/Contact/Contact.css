@@ -1,0 +1,87 @@
+
+.contact {
+    margin: 0 auto;
+    width: 100%;
+    padding: 3em 2em;
+}
+
+.contact__text {
+    align-self: flex-start;
+    padding: 0 2em;
+}
+
+
+.contact__text--title {
+    font-size: 4.5rem;
+}
+
+.contact__text--subtitle {
+    font-size: 2rem;
+}
+
+/* Contact's form */
+.contact__form {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    max-width: 1600px;
+    text-align: center;
+    margin: auto;
+}
+
+.contact__form input {
+    height: 30px;
+}
+
+.contact__form-control {
+    margin: 0.5em 0;
+    border: 1px solid var(--clr-gray);
+    background-color: var(--clr-white);
+    color: var(--clr-gray);
+    padding: 0.5em;
+    width: 100%;
+    resize: none;
+    font-size: 1rem;
+    background-color: var(--clr-bg);
+    border-radius: 7px;
+}
+
+.contact__input--message {
+    border: 1px solid var(--clr-light-yellow);
+    font-size: 0.9rem;
+    color: var(--clr-gray);
+    padding: 0.5em;
+    width: 50%;
+    resize: none;
+}
+
+.contact__form-btn {
+    margin: 1em auto 0;
+    border: none;
+    background-color: var(--clr-yellow);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5em 2em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+/* Media Queries*/
+@media (max-width: 768px) {
+    .contact__container {
+        flex-direction: column;
+
+    }
+
+    .contact__text {
+        text-align: center;
+        align-self: center;
+    }
+    .contact__form {
+        width: 100%;
+    }
+
+}

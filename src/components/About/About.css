@@ -1,0 +1,44 @@
+#about {
+    height: 100%;
+    margin: 0 auto;
+    
+}
+.about__bg {
+    padding: 13em 1em;
+    background-image: linear-gradient(rgba(58, 53, 53, 0.164) 50%, rgba(10, 10, 10, 0.5) 100%), url(../../images/about.webp);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.about__text {
+    padding: 2em;
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--clr-white);
+    line-height: 1.4;
+}
+
+.about__text--h1 {
+    font-size: 5rem;
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .about__text {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+}
+
+@media (max-width: 520px) {
+    .about__text {
+        font-size: 0.9rem;
+    }
+    .about__text--h1 {
+        font-size: 4rem;
+    }
+}

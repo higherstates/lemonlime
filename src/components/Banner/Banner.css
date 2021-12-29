@@ -1,0 +1,31 @@
+/* Banner Section */
+.banner {
+    text-align: center;
+    background-color: var(--clr-light-green);
+    padding: 6em 0;
+    line-height: 1.5;
+}
+
+.banner__title {
+    font-size: 1.7rem;
+}
+
+.banner__subtitle {
+    font-weight: 400;
+    font-size: 1.1rem;
+    padding: 0 2em;
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .banner {
+        margin-top: 90px;
+    }
+}
+
+@media (max-width: 520px) {
+    .banner {
+        margin-top: 123px;
+    }
+}
