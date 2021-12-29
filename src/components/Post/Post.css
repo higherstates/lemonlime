@@ -43,7 +43,7 @@
     font-size: 0.8rem;
 }
 
-.post__text--link {
+.post__text--btn {
     font-size: 0.8rem;
     text-decoration: none;
     color: var(--clr-black);

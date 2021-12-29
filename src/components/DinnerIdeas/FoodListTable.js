@@ -20,13 +20,22 @@ export default function FoodListTable(props) {
     const [newFoodName, setNewFoodName] = useState('')
     const updateFood = (id) => {
     if (newFoodName) {
-        Axios.put("http://localhost:3001/update", {
+        Axios.put("https://lemonlime-project.herokuapp.com/update", {
         id: id,
         newFoodName: newFoodName,
         })
         .catch(error => console.log(`The error is: ${error}`))
     }
     }
+
+      
+    // Delete food:
+    const deleteFood = (id) => {
+        const confirm = window.confirm(`This action cannot be undone.\nAre you sure you want to delete this dish?`); 
+        if(confirm === true){ 
+          Axios.delete(`https://lemonlime-project.herokuapp.com/${id}`)
+        }
+      }
 
 
     return (
@@ -64,7 +73,7 @@ export default function FoodListTable(props) {
                 </button>
                 <button 
                     className="flist__table--btn"
-                    onClick={() => props.deleteFood(props.val._id)}
+                    onClick={() => deleteFood(val._id)}
                 >
                     ❌
                 </button>

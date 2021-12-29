@@ -20,12 +20,12 @@ export default function Post(props) {
           <h1 className="post__text--title">{props.title}</h1>
           <span className="post__text--date">{props.date}</span>
           <p className='post__text--content fade'>{props.content}</p>
-          <a
+          <button
             href="/blog"
-            className='post__text--link'  
+            className='post__text--btn'  
           >
             Read More
-          </a> 
+          </button> 
         </div>
     </article>
   )

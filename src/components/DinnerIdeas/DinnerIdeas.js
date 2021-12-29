@@ -49,15 +49,7 @@ function DinnerIdeas() {
       })
     }
   
-  
-  
-    // Delete:
-    const deleteFood = (id) => {
-      const confirm = window.confirm(`This action cannot be undone.\nAre you sure you want to delete this dish?`); 
-      if(confirm === true){ 
-        Axios.delete(`https://lemonlime-project.herokuapp.com/${id}`)
-      }
-    }
+
 
 
     
