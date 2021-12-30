@@ -73,7 +73,7 @@ export default function FoodListTable(props) {
                 </button>
                 <button 
                     className="flist__table--btn"
-                    onClick={() => deleteFood(val._id)}
+                    onClick={() => deleteFood(props.val._id)}
                 >
                     ❌
                 </button>

@@ -5,7 +5,7 @@ import Banner from "../Banner/Banner"
 import FoodListComponent from "./FoodListComponent"
 import FormComponent from "./FormComponent"
 
-function DinnerIdeas() {
+export default function DinnerIdeas() {
 
     const [foodName, setFoodName] = useState('')
     const [isVegetarian, setIsVegetarian] = useState(false)
@@ -70,10 +70,7 @@ function DinnerIdeas() {
         />
         <FoodListComponent 
           foodList={foodList} 
-          deleteFood={deleteFood}
         />
       </section>
     )
   }
-  
-  export default DinnerIdeas
