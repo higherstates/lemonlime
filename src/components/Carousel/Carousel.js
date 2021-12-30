@@ -37,7 +37,7 @@ function HeroCarousel() {
                     </picture>
                     <div className="carousel__text">
                         <h1 className="carousel__text--title">
-                            Life experiences <br />through food & travel  <br /> Beyond the road & over the sky
+                            Life experiences <br />through food & travel  <br /> Beyond the roads & over the seas
                         </h1>
                         <div
                          className="home__btn"

@@ -25,12 +25,14 @@ export default function FoodListComponent(props) {
                 </tr>
             </thead>
             <tbody>
-                {props.foodList.length > 0 && props.foodList.map((val) => {
+                {props.foodList.length > 0 && props.foodList.map((val, key) => {
                     return (
-                        <FoodListTable 
+                        <FoodListTable
+                            key={key} 
                             val={val}
                             deleteFood={props.deleteFood}
                             updateFood={props.updateFood}
+                            foodUrl={props.foodUrl}
                         />    
                     )
                 })}

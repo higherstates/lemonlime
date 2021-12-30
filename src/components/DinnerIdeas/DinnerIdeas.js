@@ -11,7 +11,7 @@ export default function DinnerIdeas() {
     const [isVegetarian, setIsVegetarian] = useState(false)
     const [priceRange, setPriceRange] = useState('$')
     const [foodList, setFoodList] = useState([])
-
+    const [foodUrl, setFoodUrl] = useState('')
   
     // Read:
     useEffect(() => {
@@ -40,12 +40,14 @@ export default function DinnerIdeas() {
           foodName: foodName,
           isVegetarian: isVegetarian,
           priceRange: priceRange,
+          foodUrl: foodUrl,
         }
       )
       .then(() => {
         setFoodName('')
         setIsVegetarian(false)
         setPriceRange('$')
+        setFoodUrl('')
       })
     }
   
@@ -67,9 +69,13 @@ export default function DinnerIdeas() {
           foodName={foodName}
           isVegetarian={isVegetarian}
           priceRange={priceRange}
+          foodUrl={foodUrl}
+          setFoodUrl={setFoodUrl}
         />
-        <FoodListComponent 
-          foodList={foodList} 
+        <FoodListComponent
+          foodName={foodName}
+          foodList={foodList}
+          foodUrl={foodUrl}
         />
       </section>
     )

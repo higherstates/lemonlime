@@ -4,7 +4,9 @@ export default function FormComponent(props) {
             <h1 className="dinner__title">Dinner Ideas</h1>
             <form className="dinner__form" onSubmit={props.addToList}>
                 <div className="dinner__form-group">
-                    <label htmlFor="name">Food name:</label>
+                    <label htmlFor="name">
+                        Food name:
+                    </label>
                     <input
                         type="text"
                         name="name"
@@ -18,9 +20,10 @@ export default function FormComponent(props) {
                         required
                     />
                 </div>
-                <br />
                 <div className="dinner__form-group">
-                    <label htmlFor="vegetarian"> Is this dish Vegetarian?</label>
+                    <label htmlFor="vegetarian">
+                        Is this dish Vegetarian?
+                    </label>
                     <select
                         name="vegetarian"
                         value={props.isVegetarian}
@@ -30,10 +33,10 @@ export default function FormComponent(props) {
                         <option value="true">Yes</option>
                     </select>
                 </div>
-                
-                <br />
                 <div className="dinner__form-group">
-                    <label htmlFor="price">Price range:</label>
+                    <label htmlFor="price">
+                        Price range:
+                    </label>
                     <select
                         name="price"
                         value={props.priceRange}
@@ -43,6 +46,17 @@ export default function FormComponent(props) {
                         <option value="$$">$$</option>
                         <option value="$$$">$$$</option>
                     </select>
+                </div>
+                <div className="dinner__form-group">
+                    <label htmlFor="url">Recipe or Image URL:</label>
+                    <input
+                        type="url"
+                        name="url"
+                        value={props.foodUrl}
+                        placeholder="https://example.com"
+                        pattern="https://.*"
+                        onChange={(event) => {props.setFoodUrl(event.target.value)}}
+                     />
                 </div>
                 <br />
                 <button 
