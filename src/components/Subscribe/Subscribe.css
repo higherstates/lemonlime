@@ -20,7 +20,7 @@
 }
 
 .subscribe__text > p {
-    margin: 1em 4em;
+    padding: 0 4em;
 
 }
 
@@ -46,13 +46,19 @@
 
 .subscribe__btn {
     border: none;
-    height: 30px;
+    border-radius: 10px;
     background-color: var(--clr-green);
     color: var(--clr-white);
     margin: 0.5em;
     font-weight: 700;
+    padding: 0.6em 0.8em;
+    transition: all 0.3s;
 }
-
+.subscribe__btn:hover,
+.subscribe__btn:active {
+    background-color: var(--clr-yellow);
+    color: var(--clr-black);
+}
 
 
 /* Media Queries */
@@ -63,7 +69,11 @@
     }
 
     .subscribe__text > h2 {
-        font-size: 3.5rem;
+        line-height: 0.9;
+    }
+
+    .subscribe__text > p {
+        padding: 0 1em;
     }
 }
 
@@ -72,12 +82,5 @@
     .subscribe {
         padding: 4em 1em;
     }
-
-    .subscribe__text > h2 {
-        font-size: 3rem;
-    }
-
-    .subscribe__text > p {
-        margin: 1em auto;
-    }
+  
 }

@@ -79,13 +79,14 @@ blockquote > footer {
 
 
 /* Media Queries */
-/* Tablet: 768px */
+/* 768px */
 @media (max-width: 768px) {
   blockquote {
     padding: 0 1em;
   }
   p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
-/* Mobile: 520px */
+/* 520px */
+/* 425px */
