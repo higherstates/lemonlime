@@ -8,12 +8,12 @@
 
 /* Form */
 .dinner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 4em auto;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 4em auto;
+}
 
 .dinner__title {
   font-size: 4rem;
@@ -142,6 +142,7 @@ span.i__btn {
 .tooltip-big-text {
   --balloon-font-size: 0.7rem;
 }
+
 
 /* Icons */
 .i-veggie {

@@ -46,7 +46,7 @@
 
 .subscribe__btn {
     border: none;
-    border-radius: 10px;
+    border-radius: 3px;
     background-color: var(--clr-green);
     color: var(--clr-white);
     margin: 0.5em;

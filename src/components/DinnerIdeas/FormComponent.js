@@ -56,6 +56,7 @@ export default function FormComponent(props) {
                         placeholder="https://example.com"
                         pattern="https://.*"
                         onChange={(event) => {props.setFoodUrl(event.target.value)}}
+                        required
                      />
                 </div>
                 <br />

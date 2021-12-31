@@ -9,6 +9,7 @@
     padding: 0.5em 1em;
     margin: 1em auto 2em;
     transition: all 0.2s;
+    cursor: pointer;
 }
 .home__btn:hover,
 .home__btn:focus {
