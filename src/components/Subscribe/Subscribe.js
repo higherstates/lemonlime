@@ -59,6 +59,7 @@ export default function Subscribe() {
                     <input
                         type="text"
                         value={firstName}
+                        name="subscriber-fname"
                         placeholder="First Name"
                         size={18}
                         onChange={(event) => {setFirstName(event.target.value)}}
@@ -67,6 +68,7 @@ export default function Subscribe() {
                     <input
                         type="text"
                         value={lastName}
+                        name="subscriber-lname"
                         placeholder="Last Name"
                         size={18}
                         onChange={(event) => {setLastName(event.target.value)}}
@@ -75,6 +77,7 @@ export default function Subscribe() {
                     <input
                         type='email'
                         value={email}
+                        name="subscriber-email"
                         placeholder="Email Address"
                         size={18}
                         onChange={(event) => {setEmail(event.target.value)}}

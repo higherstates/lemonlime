@@ -49,6 +49,7 @@ export default function Contact(props) {
                     <input
                         type='text'
                         value={visitorName}
+                        name="visitor-name"
                         placeholder="Your Name"
                         onChange={(event) => {setVisitorName(event.target.value)}}
                         className="contact__form-control contact__form-email"
@@ -57,6 +58,7 @@ export default function Contact(props) {
                     <input
                         type='email'
                         value={visitorEmail}
+                        name="visitor-email"
                         placeholder="Email Address"
                         onChange={(event) => {setVisitorEmail(event.target.value)}}
                         className="contact__form-control contact__form-email"
@@ -66,6 +68,7 @@ export default function Contact(props) {
                         cols="15"
                         rows="6"
                         value={message}
+                        name="visitor-message"
                         placeholder="Message"
                         onChange={(event) => {setMessage(event.target.value)}}
                         className="contact__form-control contact__form-message"
