@@ -2,7 +2,7 @@ export default function FormComponent(props) {
     return (
         <div className="dinner container">
             <h1 className="dinner__title">Dinner Ideas</h1>
-            <form className="dinner__form" onSubmit={props.addToList} netlify>
+            <form className="dinner__form" onSubmit={props.addToList}>
                 <div className="dinner__form-group">
                     <label htmlFor="name">
                         Food name:
