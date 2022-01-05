@@ -44,6 +44,7 @@ export default function Contact(props) {
                 <form
                     onSubmit ={submitMessage}
                     className="contact__form"
+                    netlify
                 >
                     <input
                         type='text'

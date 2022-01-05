@@ -54,6 +54,7 @@ export default function Subscribe() {
                 <form
                     onSubmit ={subscribeEmail}
                     className="subscribe__form flex"
+                    netlify
                 >
                     <input
                         type="text"
