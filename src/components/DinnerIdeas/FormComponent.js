@@ -29,8 +29,8 @@ export default function FormComponent(props) {
                         value={props.isVegetarian}
                         onChange={(event) => {props.setIsVegetarian(event.target.value)}}
                     >
-                        <option value="false">No</option>
-                        <option value="true">Yes</option>
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
                     </select>
                 </div>
                 <div className="dinner__form-group">

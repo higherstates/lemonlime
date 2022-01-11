@@ -3,7 +3,7 @@ import './Post.css'
 
 export default function Post(props) {
   return (
-    <article className="post container" key={props.key}>
+    <article className="post container" key={props.id}>
       <picture className="post__img">
         <source srcSet={props.imageWebp} type="image/webp" />
         <source srcSet={props.imageJpg} type="image/jpeg" />

@@ -2,39 +2,108 @@ import React, { useState, useEffect } from "react"
 import './DinnerIdeas.css'
 import Axios from "axios"
 import Banner from "../Banner/Banner"
-import FoodListComponent from "./FoodListComponent"
+import FoodListTable from "./FoodListTable"
 import FormComponent from "./FormComponent"
+import FilterBoxes from "../FilterBoxes"
+// import FoodListRow from "./FoodListRow"
 
 export default function DinnerIdeas() {
 
     const [foodName, setFoodName] = useState('')
-    const [isVegetarian, setIsVegetarian] = useState(false)
+    const [isVegetarian, setIsVegetarian] = useState('')
     const [priceRange, setPriceRange] = useState('$')
-    const [foodList, setFoodList] = useState([])
     const [foodUrl, setFoodUrl] = useState('')
-  
-    // Read:
-    useEffect(() => {
-      let unmounted = false
-      Axios.get("https://lemonlime-project.herokuapp.com/read")
-      .then((response) => {
-        if (!unmounted) {
-          setFoodList(response.data)
+    const [foodList, setFoodList] = useState([])
+
+
+    const [searchedFood, setSearchedFood] = useState([])
+    const [textSearch, setTextSearch] = useState('')
+    const [priceDropdown, setPriceDropdown] = useState('')
+    const [vegDropdown, setVegDropdown] = useState('')
+
+    const handleSearch = (event) => {
+      event.preventDefault()
+      const newSearch = foodList.filter((value) => {
+        if (textSearch !== '' && priceDropdown === '' && vegDropdown === '') {
+          return value.foodName.toLowerCase().includes(textSearch.toLowerCase())
+        } else if (textSearch !== '' && priceDropdown === value.priceRange && vegDropdown === value.isVegetarian) {
+          return (
+            value.foodName.toLowerCase().includes(textSearch.toLowerCase())
+            && value.priceRange === priceDropdown
+            && value.isVegetarian === vegDropdown
+          )
+        } else if (textSearch !== '' && priceDropdown === '' && vegDropdown === value.isVegetarian) {
+          return (
+            value.foodName.toLowerCase().includes(textSearch.toLowerCase())
+            && value.isVegetarian === vegDropdown
+          )
+        } else if (textSearch !== '' && priceDropdown === value.priceRange && vegDropdown === '') {
+          return (
+            value.foodName.toLowerCase().includes(textSearch.toLowerCase())
+            && value.priceRange === priceDropdown
+          )
+        } else if (textSearch === '' && priceDropdown === '' && vegDropdown === value.isVegetarian) {
+          return (
+            value.isVegetarian === vegDropdown
+          )
+        } else if (textSearch === '' && priceDropdown === value.priceRange && vegDropdown === '') {
+          return (
+            value.priceRange === priceDropdown
+            )
+        } else if (textSearch === '' && priceDropdown === value.priceRange && vegDropdown === value.isVegetarian) {
+          return (
+            value.priceRange === priceDropdown
+            && value.isVegetarian === vegDropdown
+          )
+        } else {
+          console.log('Unknown')
         }
       })
-      .catch(error => {
+      if (textSearch === '' && priceDropdown !== '' && vegDropdown !== '') {
+        setSearchedFood(newSearch)
+      } else if (textSearch === '' && (priceDropdown !== '' || vegDropdown !== '')) {
+        setSearchedFood(newSearch)
+      } else if (textSearch !== '') {
+        setSearchedFood(newSearch)
+      }
+    }
+    
+    const clearSearch = (event) => {
+      event.preventDefault()
+      setSearchedFood(foodList)
+      setTextSearch('')
+      setPriceDropdown('')
+      setVegDropdown('')
+    }
+
+    // useEffect(() => {
+    //   setSearchedFood(foodList)
+    //   // console.log(searchedFood)
+    // }, [foodList]);
+
+    // Read:
+    useEffect(() => {
+    let unmounted = false
+    Axios.get("https://lemonlime-project.herokuapp.com/read")
+    .then((response) => {
+        if (!unmounted) {
+        setFoodList(response.data)
+        }
+    })
+    .catch(error => {
         console.log(`The error is: ${error}`)
         return
-      })
-      return () => {
+    })
+    return () => {
         unmounted = true
-      }
+    }
     }, [foodList])
   
     // Create:
-    const addToList = (event) => {
+    const addToList = async (event) => {
       event.preventDefault()
-      Axios.post(
+      try {
+        await Axios.post(
         "https://lemonlime-project.herokuapp.com/insert", 
         {
           foodName: foodName,
@@ -42,17 +111,17 @@ export default function DinnerIdeas() {
           priceRange: priceRange,
           foodUrl: foodUrl,
         }
-      )
-      .then(() => {
-        setFoodName('')
-        setIsVegetarian(false)
-        setPriceRange('$')
-        setFoodUrl('')
-      })
+        )
+        .then(() => {
+          setFoodName('')
+          setIsVegetarian('')
+          setPriceRange('$')
+          setFoodUrl('')
+        })
+      } catch(err) {
+        console.error(`The error is ${err}`)
+      }
     }
-  
-
-
 
     
     return (
@@ -72,10 +141,22 @@ export default function DinnerIdeas() {
           foodUrl={foodUrl}
           setFoodUrl={setFoodUrl}
         />
-        <FoodListComponent
+        <FilterBoxes
+          textSearch={textSearch} 
+          setTextSearch={setTextSearch} 
+          priceDropdown={priceDropdown} 
+          setPriceDropdown={setPriceDropdown} vegDropdown={vegDropdown} 
+          setVegDropdown={setVegDropdown} 
+          handleSearch={handleSearch} 
+          clearSearch={clearSearch}
+        />
+        <FoodListTable
+          searchedFood={searchedFood}
           foodName={foodName}
-          foodList={foodList}
+          priceRange={priceRange}
+          isVegetarian={isVegetarian}
           foodUrl={foodUrl}
+          foodList={foodList}
         />
       </section>
     )

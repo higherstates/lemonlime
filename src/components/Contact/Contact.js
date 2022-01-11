@@ -50,6 +50,7 @@ export default function Contact(props) {
                         value={visitorName}
                         name="visitor-name"
                         placeholder="Your Name"
+                        autoComplete="off"
                         onChange={(event) => {setVisitorName(event.target.value)}}
                         className="contact__form-control contact__form-email"
                         required
@@ -59,6 +60,7 @@ export default function Contact(props) {
                         value={visitorEmail}
                         name="visitor-email"
                         placeholder="Email Address"
+                        autoComplete="off"
                         onChange={(event) => {setVisitorEmail(event.target.value)}}
                         className="contact__form-control contact__form-email"
                         required

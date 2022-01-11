@@ -61,6 +61,7 @@ export default function Subscribe() {
                         name="subscriber-fname"
                         placeholder="First Name"
                         size={18}
+                        autoComplete="off"
                         onChange={(event) => {setFirstName(event.target.value)}}
                         required
                     />
@@ -70,6 +71,7 @@ export default function Subscribe() {
                         name="subscriber-lname"
                         placeholder="Last Name"
                         size={18}
+                        autoComplete="off"
                         onChange={(event) => {setLastName(event.target.value)}}
                         required
                     />
@@ -79,6 +81,7 @@ export default function Subscribe() {
                         name="subscriber-email"
                         placeholder="Email Address"
                         size={18}
+                        autoComplete="off"
                         onChange={(event) => {setEmail(event.target.value)}}
                         required
                     />
