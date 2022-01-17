@@ -1,7 +1,10 @@
 .post {
     display: flex;
     justify-content: center;
-    margin: 4em auto;
+    align-items: flex-start;
+    /* margin: 4em auto; */
+    /* margin: 2em auto; */
+    padding: 2em 0;
 }
 
 .post__img {
@@ -48,6 +51,7 @@
     color: var(--clr-black);
     background-color: var(--clr-light-yellow);
     padding: 0.5em 1em;
+    border: none;
     border-radius: 100px;
     cursor: pointer;
 }
@@ -59,12 +63,16 @@
 .post__text--content {
     font-size: 0.9rem;
     white-space: pre-line;
+}
+
+.fade {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
-}
+    -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent);
+  }
 
 
 

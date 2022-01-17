@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import { FaSeedling } from "react-icons/fa"
 
@@ -9,10 +9,12 @@ export default function FoodListRow(props) {
     const handleEdit = () => {
         setEditBtn(current => !current)
     }
+
+    // Is this important?
     // Display Edit button
-    useEffect(() => {
-        // console.log(editBtn);
-    }, [editBtn]);
+    // useEffect(() => {
+    //     // console.log(editBtn);
+    // }, []);
     
 
 
@@ -28,7 +30,6 @@ export default function FoodListRow(props) {
         }
     }
     
-
 
     // Delete food:
     const deleteFood = (id) => {
@@ -67,17 +68,14 @@ export default function FoodListRow(props) {
             </td>
             <td>{props.val.priceRange}</td>
             <td>
-                {props.val.foodUrl ? 
-                    <a 
-                        href={props.val.foodUrl} 
-                        className="flist__table--btn"
-                        target="_blank"
-                        rel="noopener noreferrer" 
-                    >
-                        🔗
-                    </a>
-                        : null
-                }
+                <a 
+                    href={props.val.foodUrl} 
+                    className="flist__table--btn"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                >
+                    🔗
+                </a>
                 <button 
                     onClick={handleEdit}
                     className="flist__table--btn"

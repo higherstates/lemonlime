@@ -66,9 +66,7 @@ blockquote > footer {
   font-size: 1.1rem;
 }
 
-.fade {
-  -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent);
-}
+
 
 .error-msg,
 .success-msg {
@@ -76,6 +74,32 @@ blockquote > footer {
   color: var(--clr-bg);
   margin: 0.3em;
 }
+
+.no-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--clr-gray);
+  margin: 3em 2em;
+  padding: 1em 0 4em;
+  font-size: 0.7rem;
+}
+.no-result > img {
+  width: 50%;
+  opacity: 0.9;
+  max-width: 300px;
+  filter: sepia(16%) saturate(200%) hue-rotate(180deg) brightness(99%) contrast(84%);
+}
+
+.no-result--big {
+  font-size: 2.3rem;
+}
+.no-result--small {
+  font-size: 1rem;
+}
+
 
 
 /* Media Queries */
@@ -88,5 +112,13 @@ blockquote > footer {
     font-size: 0.9rem;
   }
 }
+
+
 /* 520px */
+@media (max-width: 520px) {
+  .no-result--small {
+    font-size: 0.8rem;
+  }
+}
+
 /* 425px */

@@ -4,125 +4,79 @@ import Axios from "axios"
 import Banner from "../Banner/Banner"
 import FoodListTable from "./FoodListTable"
 import FormComponent from "./FormComponent"
-import FilterBoxes from "../FilterBoxes"
-// import FoodListRow from "./FoodListRow"
+import FilterSearch from "../FilterSearch/FilterSearch"
+import ResultNotFound from "../../helpers/ResultNotFound"
 
 export default function DinnerIdeas() {
 
     const [foodName, setFoodName] = useState('')
-    const [isVegetarian, setIsVegetarian] = useState('')
+    const [isVegetarian, setIsVegetarian] = useState('no')
     const [priceRange, setPriceRange] = useState('$')
     const [foodUrl, setFoodUrl] = useState('')
     const [foodList, setFoodList] = useState([])
 
-
     const [searchedFood, setSearchedFood] = useState([])
-    const [textSearch, setTextSearch] = useState('')
-    const [priceDropdown, setPriceDropdown] = useState('')
-    const [vegDropdown, setVegDropdown] = useState('')
+    const [noResult, setNoResult] = useState(false)
 
-    const handleSearch = (event) => {
-      event.preventDefault()
-      const newSearch = foodList.filter((value) => {
-        if (textSearch !== '' && priceDropdown === '' && vegDropdown === '') {
-          return value.foodName.toLowerCase().includes(textSearch.toLowerCase())
-        } else if (textSearch !== '' && priceDropdown === value.priceRange && vegDropdown === value.isVegetarian) {
-          return (
-            value.foodName.toLowerCase().includes(textSearch.toLowerCase())
-            && value.priceRange === priceDropdown
-            && value.isVegetarian === vegDropdown
-          )
-        } else if (textSearch !== '' && priceDropdown === '' && vegDropdown === value.isVegetarian) {
-          return (
-            value.foodName.toLowerCase().includes(textSearch.toLowerCase())
-            && value.isVegetarian === vegDropdown
-          )
-        } else if (textSearch !== '' && priceDropdown === value.priceRange && vegDropdown === '') {
-          return (
-            value.foodName.toLowerCase().includes(textSearch.toLowerCase())
-            && value.priceRange === priceDropdown
-          )
-        } else if (textSearch === '' && priceDropdown === '' && vegDropdown === value.isVegetarian) {
-          return (
-            value.isVegetarian === vegDropdown
-          )
-        } else if (textSearch === '' && priceDropdown === value.priceRange && vegDropdown === '') {
-          return (
-            value.priceRange === priceDropdown
-            )
-        } else if (textSearch === '' && priceDropdown === value.priceRange && vegDropdown === value.isVegetarian) {
-          return (
-            value.priceRange === priceDropdown
-            && value.isVegetarian === vegDropdown
-          )
-        } else {
-          console.log('Unknown')
+    
+    
+    // Display food list:
+    useEffect(() => {
+      let unmounted = false
+      Axios.get("https://lemonlime-project.herokuapp.com/read")
+      .then((response) => {
+        if (!unmounted) {
+          setFoodList(response.data)
         }
       })
-      if (textSearch === '' && priceDropdown !== '' && vegDropdown !== '') {
-        setSearchedFood(newSearch)
-      } else if (textSearch === '' && (priceDropdown !== '' || vegDropdown !== '')) {
-        setSearchedFood(newSearch)
-      } else if (textSearch !== '') {
-        setSearchedFood(newSearch)
-      }
-    }
-    
-    const clearSearch = (event) => {
-      event.preventDefault()
-      setSearchedFood(foodList)
-      setTextSearch('')
-      setPriceDropdown('')
-      setVegDropdown('')
-    }
-
-    // useEffect(() => {
-    //   setSearchedFood(foodList)
-    //   // console.log(searchedFood)
-    // }, [foodList]);
-
-    // Read:
-    useEffect(() => {
-    let unmounted = false
-    Axios.get("https://lemonlime-project.herokuapp.com/read")
-    .then((response) => {
-        if (!unmounted) {
-        setFoodList(response.data)
-        }
-    })
-    .catch(error => {
+      .catch(error => {
         console.log(`The error is: ${error}`)
         return
-    })
-    return () => {
+      })
+      return () => {
         unmounted = true
-    }
+      }
     }, [foodList])
-  
-    // Create:
+    
+    
+    // Add Food to list:
     const addToList = async (event) => {
       event.preventDefault()
       try {
         await Axios.post(
-        "https://lemonlime-project.herokuapp.com/insert", 
-        {
-          foodName: foodName,
-          isVegetarian: isVegetarian,
-          priceRange: priceRange,
-          foodUrl: foodUrl,
+          "https://lemonlime-project.herokuapp.com/insert", 
+          {
+            foodName: foodName,
+            isVegetarian: isVegetarian,
+            priceRange: priceRange,
+            foodUrl: foodUrl,
+          }
+          )
+          .then(() => {
+            setFoodName('')
+            setIsVegetarian('no')
+            setPriceRange('$')
+            setFoodUrl('')
+          })
+        } catch(err) {
+          console.error(`There was an error while trying to insert - ${err}`)
         }
-        )
-        .then(() => {
-          setFoodName('')
-          setIsVegetarian('')
-          setPriceRange('$')
-          setFoodUrl('')
-        })
-      } catch(err) {
-        console.error(`The error is ${err}`)
       }
-    }
 
+
+      // Paginate states:
+      const [currentPage, setCurrentPage] = useState(1)
+      const [foodPerPage] = useState(15)
+      
+      // Get current food:
+      const indexOfLastFood = currentPage * foodPerPage
+      const indexOfFirstFood = indexOfLastFood - foodPerPage
+      const currentFood = foodList.slice(indexOfFirstFood, indexOfLastFood)
+      const currentSearchedFood = searchedFood.slice(indexOfFirstFood, indexOfLastFood)
+      
+      const paginate = (pageNumber) => {
+      setCurrentPage(pageNumber)
+    }
     
     return (
       <section id="dinner-ideas">
@@ -141,23 +95,33 @@ export default function DinnerIdeas() {
           foodUrl={foodUrl}
           setFoodUrl={setFoodUrl}
         />
-        <FilterBoxes
-          textSearch={textSearch} 
-          setTextSearch={setTextSearch} 
-          priceDropdown={priceDropdown} 
-          setPriceDropdown={setPriceDropdown} vegDropdown={vegDropdown} 
-          setVegDropdown={setVegDropdown} 
-          handleSearch={handleSearch} 
-          clearSearch={clearSearch}
-        />
-        <FoodListTable
-          searchedFood={searchedFood}
-          foodName={foodName}
-          priceRange={priceRange}
-          isVegetarian={isVegetarian}
-          foodUrl={foodUrl}
+        <FilterSearch
           foodList={foodList}
+          searchedFood={searchedFood}
+          setSearchedFood={setSearchedFood}
+          noResult={noResult}
+          setNoResult={setNoResult}
+          currentFood={currentFood}
+          paginate={paginate}
         />
+        {noResult ? <ResultNotFound/>
+          :
+            <FoodListTable
+              foodName={foodName}
+              priceRange={priceRange}
+              isVegetarian={isVegetarian}
+              foodUrl={foodUrl}
+              foodList={foodList}
+              currentFood={currentFood}
+              searchedFood={searchedFood}
+              currentSearchedFood={currentSearchedFood}
+              totalFood={foodList.length}
+              totalSearchedFood={searchedFood.length}
+              paginate={paginate}
+              noResult={noResult}
+              foodPerPage={foodPerPage}
+            />
+        }
       </section>
     )
   }
