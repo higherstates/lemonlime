@@ -90,8 +90,9 @@ blockquote > footer {
   padding: 1em 0 4em;
   font-size: 0.7rem;
 }
-.no-result > img {
+.i-no-result {
   width: 50%;
+  height: auto;
   opacity: 0.9;
   max-width: 300px;
   filter: sepia(16%) saturate(200%) hue-rotate(180deg) brightness(99%) contrast(84%);
