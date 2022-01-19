@@ -1,7 +1,6 @@
 .home__btn {
     display: inline-block;
     text-transform: uppercase;
-    text-decoration: none;
     font-weight: 700;
     border-radius: 1px;
     color: var(--clr-black);

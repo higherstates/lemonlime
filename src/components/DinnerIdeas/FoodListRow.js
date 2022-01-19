@@ -90,14 +90,15 @@ export default function FoodListRow(props) {
             </td>
             <td>{props.val.priceRange}</td>
             <td>
-                <a 
-                    href={props.val.foodUrl} 
-                    className="flist-table__btn"
-                    target="_blank"
-                    rel="noopener noreferrer" 
-                >
-                    🔗
-                </a>
+                <button className="flist-table__btn">
+                    <a
+                        href={props.val.foodUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        🔗
+                    </a>
+                </button>
                 <button 
                     onClick={handleEdit}
                     className="flist-table__btn"

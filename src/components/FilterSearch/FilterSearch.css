@@ -110,7 +110,7 @@
     .search__form {
         width: 100%;
         border-radius: 10px;
-        padding: 1em;
+        padding-block: 1em;
         border: none;
         background-color: transparent;
     }

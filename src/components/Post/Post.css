@@ -45,7 +45,6 @@
 
 .post__text--btn {
     font-size: 0.8rem;
-    text-decoration: none;
     color: var(--clr-black);
     background-color: var(--clr-light-yellow);
     padding: 0.5em 1em;

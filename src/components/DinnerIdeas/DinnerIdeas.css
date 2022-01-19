@@ -91,11 +91,11 @@
 }
 
 .flist-table__price {
-  width: 10%;
+  width: 12%;
 }
 
 .flist-table__actions {
-  width: 30%;
+  width: 28%;
 }
 
 
@@ -120,7 +120,6 @@
   padding: 0.1em 0.4em;
   margin: 0.2em;
   opacity: 0.6;
-  text-decoration: none;
 }
 
 .flist-table__btn:hover, .flist-table__btn:active {
@@ -190,11 +189,11 @@ span.i__btn {
     margin-top: 0.5em;
   }
 
-  .flist__table {
+  .flist-table {
     width: 100%;
   }
 
-  .flist__table--btn {
+  .flist-table__btn {
     font-size: 0.7rem;
   }
 }
