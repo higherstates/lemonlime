@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import { HiSearch } from "react-icons/hi"
 import { MdClear } from "react-icons/md"
 import './FilterSearch.css'
@@ -44,10 +44,12 @@ export default function FilterSearch(props) {
       }
     })
     props.setSearchedFood(newSearch)
+    console.log(newSearch)
     if (!newSearch.length) {
       props.setNoResult(true)
     } else {
       props.setNoResult(false)
+      props.paginate(1)
     }
   }
 
@@ -68,7 +70,6 @@ export default function FilterSearch(props) {
       <form className="search__form">
         <div className="search__filter">
           <input className="search__input" type="text" placeholder="Find your favorites" name="text-search" autoComplete="off" value={textSearch} onChange={(event) => {setTextSearch(event.target.value)
-            console.log(event.target.value)
           }} />
           <div className="search__dropdown">
             <select className="search__options" name="veg-dropdown" value={vegDropdown} onChange={(event) => {setVegDropdown(event.target.value)}} >

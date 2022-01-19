@@ -62,7 +62,7 @@
 
 /* Food list */
 .flist {
-  margin: 2em auto 4em;
+  margin: 0 auto 4em;
   max-width: 1000px;
 }
 
@@ -72,35 +72,48 @@
 
 
 /* Food list Table */
-.flist__table {
+.flist-table {
   border-collapse: collapse;
-  table-layout: auto;
-  margin: 1em auto;
+  table-layout: fixed;
+  margin: 0 auto;
   text-align: center;
   width: 90%;
   white-space: wrap;
 }
 
-.flist__table th {
+.flist-table th {
   border: 2px solid white;
   background-color: var(--clr-white);
 }
 
+.flist-table__name {
+  width: 50%;
+}
 
-.flist__table td {
+.flist-table__price {
+  width: 10%;
+}
+
+.flist-table__actions {
+  width: 30%;
+}
+
+
+
+.flist-table td {
   border: 2px solid white;
   background-color: var(--clr-light-yellow);
   padding: 0.3em;
 }
 
-.flist__table input {
+.flist-table input {
   margin: 0.6em 0.3em auto;
   border: none;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.301);
 }
 
-.flist__table--btn {
+.flist-table__btn {
   border: 1px solid white;
   border-radius: 3px;
   background-color: var(--clr-white);
@@ -110,16 +123,9 @@
   text-decoration: none;
 }
 
-.flist__table--btn:hover, .flist__table--btn:active {
+.flist-table__btn:hover, .flist-table__btn:active {
   opacity: 1;
 }
-
-.flist__table--url {
-  text-decoration: none;
-  color: var(--clr-black);
-  font-weight: 700;
-}
-
 
 
   /* Tooltip button */

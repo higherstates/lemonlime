@@ -7,6 +7,9 @@
 
 .pagination > ul {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -14,22 +17,28 @@
 
 
 .page-link {
-    position: relative;
-    display: block;
-    padding: 0.5em 0.75em;
+    /* position: relative; */
+    /* display: block; */
+    padding: 0.4em 0.75em;
     margin-left: -1px;
+    margin-block: 0.1em;
     line-height: 1.25;
-    color: #007bff;
-    background-color: #fff;
-    border: 1px solid #dee2e6;
-    text-decoration: none;
+    color: var(--clr-gray);
+    background-color: var(--clr-white);
+    border: 1px solid #c8d0d8;
+    border-radius: 3px;
+    opacity: 0.5;
     transition: 0.2s;
 }
 
-.page-link:active,
+.page-link.active {
+    /* background-color: blue; */
+    opacity: 1;
+}
+
 .page-link:hover,
 .page-link:focus {
-    border: 1px solid black;
+    opacity: 1;
 }
 
 .page-link:not(:disabled):not(.disabled) {

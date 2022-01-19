@@ -62,7 +62,7 @@
 /* Tablet */
 @media (max-width: 768px) {
 
-  nav {
+  .nav {
     position: fixed !important;
     top: 0;
   }

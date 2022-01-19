@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom"
 export default function Navbar() {
 
     return (
-        <nav className="nav">
+        <nav aria-label="Main menu" className="nav">
             <div className="nav__container">
                 <NavLink to="/">
                     <img src={Logo} className="nav__logo" alt="logo" />

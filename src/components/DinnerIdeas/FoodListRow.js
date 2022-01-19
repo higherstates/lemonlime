@@ -7,16 +7,8 @@ export default function FoodListRow(props) {
     // Edit food name:
     const [editBtn, setEditBtn] = useState(false)
     const handleEdit = () => {
-        setEditBtn(current => !current)
+        setEditBtn(!editBtn)
     }
-
-    // Is this important?
-    // Display Edit button
-    // useEffect(() => {
-    //     // console.log(editBtn);
-    // }, []);
-    
-
 
     // Update Food Name:
     const [newFoodName, setNewFoodName] = useState('')
@@ -26,7 +18,31 @@ export default function FoodListRow(props) {
                 id: id,
                 newFoodName: newFoodName,
             })
-            .catch(error => console.log(`The error is: ${error}`))
+            .then(() => {
+                props.setSearchedFood(props.searchedFood.map((val) => {
+                    return (
+                        val._id === id ? 
+                        {
+                            _id: id,
+                            foodName: newFoodName,
+                            isVegetarian: props.isVegetarian, priceRange: props.priceRange, 
+                            foodUrl: props.foodUrl,
+                        } : val
+                    )
+                }))
+                props.setFoodList(props.foodList.map((val) => {
+                    return (
+                        val._id === id ? 
+                        {
+                            _id: id,
+                            foodName: newFoodName,
+                            isVegetarian: props.isVegetarian, priceRange: props.priceRange, 
+                            foodUrl: props.foodUrl,
+                        } : val
+                    )
+                }))
+            })
+            .catch(error => console.log(`Update name failed: ${error}`))
         }
     }
     
@@ -36,16 +52,22 @@ export default function FoodListRow(props) {
         const confirm = window.confirm(`This action cannot be undone.\nAre you sure you want to delete this dish?`); 
         if(confirm === true){ 
           Axios.delete(`https://lemonlime-project.herokuapp.com/delete/${id}`)
+          .then(() => {
+            props.setSearchedFood(props.searchedFood.filter((val) => {
+                return val._id !== id
+            }))
+            props.setFoodList(props.foodList.filter((val) => {
+                return val._id !== id
+            }))
+          })
         }
     }
 
-
     return (
-        <tr key={props.val.id}>
+        <tr key={props.val._id}>
             <td>
                 {props.val.foodName}
                 {props.val.isVegetarian === "yes" ? <FaSeedling className="i-veggie" /> : null }
-                
                 {editBtn && 
                     <div>
                         <input
@@ -58,7 +80,7 @@ export default function FoodListRow(props) {
                             onChange={(event) => {setNewFoodName(event.target.value)}}
                         />
                         <button
-                        className="flist__table--btn"
+                        className="flist-table__btn"
                         onClick={() => updateFoodName(props.val._id)}
                         >
                             ✓
@@ -70,7 +92,7 @@ export default function FoodListRow(props) {
             <td>
                 <a 
                     href={props.val.foodUrl} 
-                    className="flist__table--btn"
+                    className="flist-table__btn"
                     target="_blank"
                     rel="noopener noreferrer" 
                 >
@@ -78,12 +100,12 @@ export default function FoodListRow(props) {
                 </a>
                 <button 
                     onClick={handleEdit}
-                    className="flist__table--btn"
+                    className="flist-table__btn"
                 >
                     ✏️
                 </button>
                 <button 
-                    className="flist__table--btn"
+                    className="flist-table__btn"
                     onClick={() => deleteFood(props.val._id)}
                 >
                     ❌

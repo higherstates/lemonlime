@@ -34,6 +34,7 @@
     background-color: var(--clr-white);
     border: none;
     border-radius: 20px;
+    outline: solid transparent;
 }
 
 .search__dropdown {
